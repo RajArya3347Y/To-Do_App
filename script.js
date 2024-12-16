@@ -3,8 +3,8 @@ const inputField = document.querySelector("#task-input");
 const addBtn = document.querySelector("#add-btn");
 const taskList = document.querySelector("#display-list");
 let checkboxes = document.querySelectorAll(".checkbox");
-
 let deleteIcons = document.querySelectorAll(".delete-icon");
+let editIcons = document.querySelectorAll(".edit-Icon");
 
 
 
@@ -17,7 +17,7 @@ function newTask(taskName) {
 		<p>${taskName}</p>
 	</div> 
 	<div class="icon-buttons">
-		<i class="fa-solid fa-pen-to-square"></i>
+		<i class="fa-solid fa-pen-to-square edit-icon"></i>
 		<i class="fa-solid fa-trash delete-icon"></i>
 	</div>
 	`;
@@ -32,6 +32,7 @@ function addTask(value) {
 		inputField.value = "";
 		reassignCheckboxes();
 		reassignDeleteIcons();
+		reassignEditIcons();
 	}
 
 }
@@ -55,6 +56,18 @@ function reassignCheckboxes(){
     });
 }
 
+function reassignEditIcons(){
+	editIcons = document.querySelectorAll(".edit-icon");
+
+	//event listeners to the icons
+	editIcons.forEach((editIcon) => {
+		let taskName = editIcon.closest("li").querySelector("div:first-child");
+		editIcon.addEventListener("click", () => {
+			
+		});
+	});
+}
+
 function reassignDeleteIcons(){
 	deleteIcons = document.querySelectorAll(".delete-icon");
 
@@ -65,6 +78,7 @@ function reassignDeleteIcons(){
 			parentItem.remove();
 			reassignCheckboxes();
 			reassignDeleteIcons();
+			reassignEditIcons();
 		})
 	})
 }
