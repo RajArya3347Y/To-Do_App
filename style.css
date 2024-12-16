@@ -105,3 +105,12 @@ ul li div{
 	opacity: 0.8;
 }
 
+ul li div:first-child input{
+	border: .2px solid lightgray;
+	outline: none;
+	margin-bottom: 5px;
+	padding: 5px;
+	border-radius: 1rem;
+	font-size: 1rem;
+}
+
