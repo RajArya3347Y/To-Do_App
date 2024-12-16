@@ -75,6 +75,13 @@ function reassignEditIcons(){
 				newNameField.replaceWith(taskName);
 			}
 		});
+
+		newNameField.addEventListener("blur", () =>{
+			
+				taskName.innerText = newNameField.value;
+				newNameField.replaceWith(taskName);
+
+		});
 	});
 }
 
