@@ -4,7 +4,7 @@ const addBtn = document.querySelector("#add-btn");
 const taskList = document.querySelector("#display-list");
 let checkboxes = document.querySelectorAll(".checkbox");
 
-let deleteIcons = document.querySelectorAll(".delte-icon");
+let deleteIcons = document.querySelectorAll(".delete-icon");
 
 
 
