@@ -61,9 +61,19 @@ function reassignEditIcons(){
 
 	//event listeners to the icons
 	editIcons.forEach((editIcon) => {
-		let taskName = editIcon.closest("li").querySelector("div:first-child");
+		let taskName = editIcon.closest("li").querySelector("p");
+		let newNameField = document.createElement(`input`)
+		newNameField.value = taskName.innerText;
 		editIcon.addEventListener("click", () => {
-			
+			taskName.replaceWith(newNameField);
+			newNameField.focus();
+		});
+
+		newNameField.addEventListener("keydown", (evt) =>{
+			if(evt.key === "Enter"){
+				taskName.innerText = newNameField.value;
+				newNameField.replaceWith(taskName);
+			}
 		});
 	});
 }
