@@ -17,6 +17,7 @@ function newTask(taskName) {
 		<p>${taskName}</p>
 	</div> 
 	<div class="icon-buttons">
+		<i class="fa-solid fa-pen-to-square"></i>
 		<i class="fa-solid fa-trash delete-icon"></i>
 	</div>
 	`;
