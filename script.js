@@ -43,7 +43,7 @@ function reassignCheckboxes(){
     // Add event listeners to each checkbox
     checkboxes.forEach((checkbox) => {
 		let isDone = false;
-        checkbox.addEventListener("change", (event) => {
+        checkbox.addEventListener("change", () => {
 			isDone = !isDone;
 
 			if(isDone === true){
@@ -64,9 +64,17 @@ function reassignEditIcons(){
 		let taskName = editIcon.closest("li").querySelector("p");
 		let newNameField = document.createElement(`input`)
 		newNameField.value = taskName.innerText;
+		let isEditing = false
 		editIcon.addEventListener("click", () => {
-			taskName.replaceWith(newNameField);
-			newNameField.focus();
+			isEditing = !isEditing
+			if(isEditing === false){
+				taskName.replaceWith(newNameField);
+				newNameField.focus();
+			}
+			else{
+				taskName.innerText = newNameField.value;
+				newNameField.replaceWith(taskName);
+			}
 		});
 
 		newNameField.addEventListener("keydown", (evt) =>{
