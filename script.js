@@ -37,26 +37,26 @@ function addTask(value) {
 
 }
 
-function reassignCheckboxes(){
+function reassignCheckboxes() {
 	checkboxes = document.querySelectorAll('.checkbox');
-    
-    // Add event listeners to each checkbox
-    checkboxes.forEach((checkbox) => {
+
+	// Add event listeners to each checkbox
+	checkboxes.forEach((checkbox) => {
 		let isDone = false;
-        checkbox.addEventListener("change", () => {
+		checkbox.addEventListener("change", () => {
 			isDone = !isDone;
 
-			if(isDone === true){
+			if (isDone === true) {
 				checkbox.parentElement.lastElementChild.style.textDecoration = "line-through";
 			}
-			else{
+			else {
 				checkbox.parentElement.lastElementChild.style.textDecoration = "none";
 			}
-        });
-    });
+		});
+	});
 }
 
-function reassignEditIcons(){
+function reassignEditIcons() {
 	editIcons = document.querySelectorAll(".edit-icon");
 
 	//event listeners to the icons
@@ -64,42 +64,44 @@ function reassignEditIcons(){
 		let taskName = editIcon.closest("li").querySelector("p");
 		let newNameField = document.createElement(`input`)
 		newNameField.value = taskName.innerText;
-		let isEditing = false
 		editIcon.addEventListener("click", () => {
-			isEditing = !isEditing
-			if(isEditing === false){
+
+			if (isEditing === false) {
 				taskName.replaceWith(newNameField);
 				newNameField.focus();
+
 			}
-			else{
+			else {
 				taskName.innerText = newNameField.value;
 				newNameField.replaceWith(taskName);
+			}
+
+		});
+
+		newNameField.addEventListener("keydown", (evt) => {
+			if (evt.key === "Enter") {
+
+				taskName.innerText = newNameField.value;
+				newNameField.replaceWith(taskName);
+
 			}
 		});
 
-		newNameField.addEventListener("keydown", (evt) =>{
-			if(evt.key === "Enter"){
-				taskName.innerText = newNameField.value;
-				newNameField.replaceWith(taskName);
-			}
-		});
-
-		newNameField.addEventListener("blur", () =>{
-			
-				taskName.innerText = newNameField.value;
-				newNameField.replaceWith(taskName);
+		newNameField.addEventListener("blur", () => {
+			taskName.innerText = newNameField.value;
+			newNameField.replaceWith(taskName);
 
 		});
 	});
 }
 
-function reassignDeleteIcons(){
+function reassignDeleteIcons() {
 	deleteIcons = document.querySelectorAll(".delete-icon");
 
 	//Event listeners
 	deleteIcons.forEach((deleteIcon) => {
 		const parentItem = deleteIcon.closest("li");
-		deleteIcon.addEventListener("click", () =>{
+		deleteIcon.addEventListener("click", () => {
 			parentItem.remove();
 			reassignCheckboxes();
 			reassignDeleteIcons();
@@ -113,14 +115,14 @@ function reassignDeleteIcons(){
 
 //event listeners
 
-	//to add task
+//to add task
 addBtn.addEventListener("click", () => {
 	addTask(inputField.value);
 });
 
-	// to add task with enter key
-inputField.addEventListener("keydown",(e) => {
-	if(e.key === "Enter"){
+// to add task with enter key
+inputField.addEventListener("keydown", (e) => {
+	if (e.key === "Enter") {
 		addTask(inputField.value);
 	}
 });

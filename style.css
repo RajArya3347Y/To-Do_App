@@ -110,7 +110,7 @@ ul li div{
 }
 
 ul li div:first-child input{
-	border: .2px solid lightgray;
+	border: none;
 	outline: none;
 	margin-bottom: 5px;
 	padding: 5px;
