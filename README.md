@@ -1,3 +1,5 @@
 # To-Do App
 
-in it you can add Task, delete and edit it
+In it you can add Task, delete and edit it
+
+Its a web based applictation
