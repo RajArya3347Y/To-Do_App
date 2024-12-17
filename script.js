@@ -63,6 +63,7 @@ function reassignEditIcons() {
 	editIcons.forEach((editIcon) => {
 		let taskName = editIcon.closest("li").querySelector("p");
 		let newNameField = document.createElement(`input`)
+		let isEditing = false;
 		newNameField.value = taskName.innerText;
 		editIcon.addEventListener("click", () => {
 
