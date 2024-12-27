@@ -13,9 +13,9 @@ function newTask(taskName) {
 	const newTask = document.createElement("li");
 	newTask.innerHTML = `
 	<div>
-		<input type='checkbox' class='checkbox' form="none"> 
+		<input type='checkbox' class='checkbox' form="none">
 		<p>${taskName}</p>
-	</div> 
+	</div>
 	<div class="icon-buttons">
 		<i class="fa-solid fa-pen-to-square edit-icon"></i>
 		<i class="fa-solid fa-trash delete-icon"></i>
