@@ -7,12 +7,14 @@ let deleteIcons = document.querySelectorAll(".delete-icon");
 let editIcons = document.querySelectorAll(".edit-Icon");
 
 
+//logical variables
+let index = 0;
 
 //new task function
 function newTask(taskName) {
 	const newTask = document.createElement("li");
 	newTask.innerHTML = `
-	<div>
+	<div class="${index}">
 		<input type='checkbox' class='checkbox' form="none">
 		<p>${taskName}</p>
 	</div>
@@ -29,6 +31,7 @@ function newTask(taskName) {
 function addTask(value) {
 	if (value != "") {
 		taskList.prepend(newTask(value));
+		localStorage.setItem(index,value);
 		inputField.value = "";
 		reassignCheckboxes();
 		reassignDeleteIcons();
@@ -70,11 +73,13 @@ function reassignEditIcons() {
 			if (isEditing === false) {
 				taskName.replaceWith(newNameField);
 				newNameField.focus();
+				isEditing = true;
 
 			}
 			else {
 				taskName.innerText = newNameField.value;
 				newNameField.replaceWith(taskName);
+				isEditing = !isEditing;
 			}
 
 		});
@@ -84,6 +89,7 @@ function reassignEditIcons() {
 
 				taskName.innerText = newNameField.value;
 				newNameField.replaceWith(taskName);
+				isEditing = true;
 
 			}
 		});
@@ -91,7 +97,7 @@ function reassignEditIcons() {
 		newNameField.addEventListener("blur", () => {
 			taskName.innerText = newNameField.value;
 			newNameField.replaceWith(taskName);
-
+			isEditing = true;
 		});
 	});
 }
