@@ -118,8 +118,6 @@ function reassignDeleteIcons() {
 }
 
 
-
-
 //event listeners
 
 //to add task
